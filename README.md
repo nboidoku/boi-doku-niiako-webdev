@@ -1,8 +1,19 @@
-# web-dev-template
+My name is Nii Ako Boi-Doku and I am a second-year student at Northeastern
+University seeking a Bachelor of Science in Computer Science.
+I currently spend most of my time working on projects in Satellite Labs,
+which is a Ghanaian tech startup building products to propel development in
+Ghana.
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-1. cd web-dev-template
-1. npm install
-1. mongod
-1. node server.js
-1. browse to localhost:3000
+
+This repository is meant for the Web Development Spring 2017 class.
+
+
+Root to the hosted environment on Heroku :
+    https://boi-doku-niiako-webdev.herokuapp.com/
+
+Link to my project:
+    https://boi-doku-niiako-webdev.herokuapp.com/project/index.html
+
+Link to your assignment
+    https://boi-doku-niiako-webdev.herokuapp.com/assignment/index.html
+
