@@ -14,6 +14,8 @@ Root to the hosted environment on Heroku :
 Link to my project:
     https://boi-doku-niiako-webdev.herokuapp.com/project/index.html
 
-Link to your assignment
+Link to your assignment:
     https://boi-doku-niiako-webdev.herokuapp.com/assignment/index.html
 
+Link to the test:
+    https://boi-doku-niiako-webdev.herokuapp.com/test/index.html
