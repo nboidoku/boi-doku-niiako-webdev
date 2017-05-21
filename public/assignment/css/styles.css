@@ -1,7 +1,28 @@
-input.form-control {
+
+input.form-control,
+textarea.form-control {
     margin-bottom: 5px;
 }
 
+.profile-inputs .form-control {
+    margin-bottom: 30px;
+}
+
+.copyright {
+    color: #0f0f0f;
+    font-size: 70%;
+
+}
+
 body {
-    padding-top: 36px;
+    margin-top: 70px;
+    margin-bottom: 60px;
+}
+
+.navbar-default {
+    background-color: #078CCC;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
 }
