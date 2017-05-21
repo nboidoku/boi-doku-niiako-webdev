@@ -4,6 +4,10 @@ textarea.form-control {
     margin-bottom: 5px;
 }
 
+.navbar-form .form-group .form-control {
+    margin-bottom: 0px;
+}
+
 .profile-inputs .form-control {
     margin-bottom: 30px;
 }
@@ -19,10 +23,50 @@ body {
     margin-bottom: 60px;
 }
 
+li {
+    color : #2b542c;
+}
+
 .navbar-default {
     background-color: #078CCC;
 }
 
 .navbar-default .navbar-brand {
-    color: white;
+    color: #ffffff;
 }
+
+.navbar-default .navbar-nav>li>a {
+    color: #ffffff;
+}
+
+.navbar>.container-fluid .navbar-brand {
+    margin-left: 5px;
+    padding-left: 0;
+}
+
+.navbar-default .back-button {
+    padding-top: 13px;
+    font-size: 18px;
+    padding-bottom: 16px;
+    padding-right: 10px;
+    padding-left:10px;
+    margin-left: -10px;
+
+}
+
+.navbar-default .navbar-header>a{
+    color: #ffffff;
+}
+
+.navbar-default .navbar-header>a:hover{
+    color: grey;
+}
+
+.table-cog {
+    margin-right: 10px;
+}
+
+
+
+
+
