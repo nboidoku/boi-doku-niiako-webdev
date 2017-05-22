@@ -67,6 +67,30 @@ li {
     white-space: nowrap;
 }
 
+.wd-toolbar {
+    position: absolute;
+    right: 16px;
+    background-color: #d7ebf5;
+    opacity: 0.6;
+    border-bottom-left-radius: 8px;
+}
+
+.widget-list>li>a {
+    text-decoration: none;
+}
+
+.widget-list>li {
+    font-size: 120%;
+    margin-top: 10px;
+    margin-bottom:10px;
+    padding: 10px;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
 
 
 
