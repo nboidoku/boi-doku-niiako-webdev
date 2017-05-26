@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="../vendor/bootstrap/dist/css/bootstrap.min.css"
-          rel="stylesheet"/>
-    <link href="../css/styles.css" rel="stylesheet"/>
+    <link href="../../../vendor/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../../css/styles.css" rel="stylesheet"/>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
 
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
@@ -26,7 +24,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                Profile
+                Choose Widget
             </a>
         </div>
 
@@ -55,32 +53,37 @@
 </nav>
 
 
-<div class="container">
-    <div class=profile-inputs>
-        <label for="username">Username </label>
-        <input value="nboidoku" id="username" class="form-control"/>
-
-        <label for="first">First</label>
-        <input value="Nii" id="first" class="form-control"/>
-
-        <label for="last">Last</label>
-        <input value="Boi-Doku" id="last" class="form-control"/>
-
-        <label for="email">Email</label>
-        <input value="boi-doku.n@husky.neu.edu" id="email" type="email"
-               class="form-control"/>
-    </div>
-
-    <a href="../website/website-list.html"
-       class="btn btn-block btn-primary">Websites</a>
-    <a href="login.html" class="btn btn-block btn-danger">Logout</a>
+<div class="container-fluid">
+    <ul class="widget-list">
+        <li>
+            <a href="widget-heading.view.client.html">
+                Header
+            </a>
+        </li>
+        <li>Label</li>
+        <li>HTML</li>
+        <li>Text Input</li>
+        <li>Link</li>
+        <li>Button</li>
+        <li>
+            <a href="widget-image.view.client.html">Image</a>
+        </li>
+        <li>
+            <a href="widget-youtube.view.client.html">
+                Youtube
+            </a>
+        </li>
+        <li>Data Table</li>
+        <li>Repeater</li>
+    </ul>
 </div>
+
 
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">
+            <li><a href="../../user/templates/profile.view.client.html">
                 <span class="glyphicon glyphicon-user pull-right"></span>
             </a>
             </li>
