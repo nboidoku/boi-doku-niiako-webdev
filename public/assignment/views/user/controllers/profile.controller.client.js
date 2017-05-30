@@ -12,9 +12,10 @@
 
         model.user = userService.findUserById(userId);
 
-        model.updateUser = function(username, firstName, lastName, email) {
-            userService.updateUser(username, firstName, lastName, email);
+        model.updateUser = function(user, firstName, lastName, email) {
+            userService.updateUser(user._id, firstName, lastName, email);
             $location.url('/profile/'+userId);
+            model.successful = "Successfully updated profile";
         }
 
 

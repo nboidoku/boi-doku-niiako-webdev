@@ -2,9 +2,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="#">
-                <span class="glyphicon glyphicon-chevron-left pull-left back-button"></span>
-            </a>
             <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1"
@@ -34,7 +31,7 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </li>
-                <li><a ng-click="model.updateUser(model.user.username,
+                <li><a ng-click="model.updateUser(model.user,
                 model.user.firstName, model.user.lastName, model.user.email)">
                     <span class="glyphicon glyphicon-ok pull-right"></span>
                 </a>
@@ -45,6 +42,15 @@
 </nav>
 
 <div class="container">
+
+    <div ng-show="model.successful" class="alert alert-success">
+        {{model.successful}}
+    </div>
+
+    <div ng-show="model.message" class="alert alert-info">
+        {{model.message}}
+    </div>
+
     <div class=profile-inputs>
         <label for="username">Username </label>
         <input

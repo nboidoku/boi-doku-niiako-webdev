@@ -36,12 +36,14 @@
             users.splice(index, 1);
         }
 
-        function updateUser(userId, user) {
-            for (var u in users) {
-                if (users[u]._id === userId) {
-                    users[u] = user;
-                }
-            }
+        function updateUser(userId, first, last, email) {
+            var user = users.find(function (user) {
+                return user._id === userId;
+            });
+            var index = users.indexOf(user);
+            users[index].firstName = first;
+            users[index].lastName = last;
+            users[index].email = email;
         }
 
         function findUserById(userId) {

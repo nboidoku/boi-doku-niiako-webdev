@@ -48,7 +48,7 @@
                 controller: 'pageListController',
                 controllerAs: 'model'
             })
-            .when('/user/:user/website/:websiteId/page/:pageId', {
+            .when('/user/:userId/website/:websiteId/page/:pageId', {
                 templateUrl: 'views/page/templates/page-edit.view.client.html',
                 controller: 'pageEditController',
                 controllerAs: 'model'
