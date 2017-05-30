@@ -15,6 +15,7 @@
 
         return {
             findUserById: findUserById,
+            findUserByUsername: findUserByUsername,
             findUserByCredentials:findUserByCredentials,
             createUser: createUser,
             deleteUser: deleteUser,
@@ -24,6 +25,7 @@
         function createUser(user) {
             user._id = (new Date()).getTime() + "";
             users.push(user);
+            return user;
         }
 
         function deleteUser(userId) {
@@ -52,6 +54,16 @@
             for(var u in users) {
                 var user = users[u];
                 if(user.username === username && user.password === password) {
+                    return user;
+                }
+            }
+            return null;
+        }
+
+        function findUserByUsername(username) {
+            for (var u in users) {
+                var user = users[u];
+                if (user.username === username) {
                     return user;
                 }
             }

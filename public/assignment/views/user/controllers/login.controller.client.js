@@ -8,8 +8,6 @@
 
         var model = this;
 
-
-
         model.login = function (username, password) {
 
             var found = userService.findUserByCredentials(username, password);

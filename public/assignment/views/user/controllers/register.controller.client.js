@@ -27,9 +27,8 @@
                     username: username,
                     password: password
                 };
-                // model.message = user;
                 userService.createUser(user);
-                $location.url('/user/' + user._id);
+                $location.url('/profile/' + user._id);
             }
         }
     }

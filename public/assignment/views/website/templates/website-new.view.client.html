@@ -2,9 +2,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="#">
+            <!--<a href=#!/profile/{{model.userId}}">
                 <span class="glyphicon glyphicon-chevron-left pull-left back-button"></span>
-            </a>
+            </a>-->
             <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1"
@@ -65,47 +65,26 @@
                 </li>
 
 
-                <li class="list-group-item">
+                <li ng-repeat="website in model.websites" class="list-group-item">
                     <div class="row">
-                        <div class="col-lg-5 col-md-8 col-sm-8 col-xs-8">
-                            <a href="../page/page-list.html">
-                                Cras justo odio
+                        <div class="col-lg-5 col-md-8 col-sm-11 col-xs-6">
+                            <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                                {{website.name}}
                             </a>
                         </div>
                         <div class="col-lg-3 visible-lg">
-                            1/1/2017
+                            {{website.created | date}}
                         </div>
                         <div class="col-md-2 hidden-sm  hidden-xs">
-                            2/2/2017
+                            {{website.updated | date}}
                         </div>
-                        <div class="col-sm-4 col-xs-4">
-                            <!--<a href="website-edit.html" class="pull-right">-->
-                            <!--<span class="glyphicon glyphicon-cog pull-right"></span>-->
-                            <!--</a>-->
+                        <div class="col-sm-2 col-xs-6">
+                            <a href="#!/user/{{model.userId}}/website/{{website._id}}">
+                                <span class="glyphicon glyphicon-cog pull-right"></span>
+                            </a>
                         </div>
                     </div>
                 </li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
-                <li class="list-group-item">Vestibulum at eros</li>
             </ul>
         </div>
         <div class="col-xs-12 col-sm-8">
