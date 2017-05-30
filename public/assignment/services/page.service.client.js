@@ -29,7 +29,7 @@
 
         return {
             createPage: createPage,
-            findAllPagesForUser: findAllPagesForUser,
+            findAllPagesForWebsite: findAllPagesForWebsite,
             findPageById: findPageById,
             updatePage: updatePage,
             deletePage: deletePage
@@ -65,7 +65,7 @@
             });
         }
 
-        function findAllPagesForUser(websiteId) {
+        function findAllPagesForWebsite(websiteId) {
             var resultSet = [];
             for(var w in pages) {
                 if(pages[w].websiteId === websiteId) {
@@ -74,9 +74,6 @@
             }
             return resultSet;
         }
-
-
-
 
     }
 })

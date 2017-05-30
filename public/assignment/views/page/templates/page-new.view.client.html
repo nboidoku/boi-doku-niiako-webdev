@@ -51,10 +51,8 @@
                             Page
                         </div>
                         <div class="col-lg-3 visible-lg">
-                            Created
                         </div>
                         <div class="col-md-2 hidden-sm  hidden-xs">
-                            Updated
                         </div>
                         <div class="col-sm-2 col-xs-6">
 
@@ -71,10 +69,8 @@
                             </a>
                         </div>
                         <div class="col-lg-3 visible-lg">
-                            {{page.created | date}}
                         </div>
                         <div class="col-md-2 hidden-sm  hidden-xs">
-                            {{page.updated | date}}
                         </div>
                         <div class="col-sm-2 col-xs-6">
                             <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{page._id}}">
@@ -107,13 +103,4 @@
     </div>
 </div>
 
-<nav class="navbar navbar-default navbar-fixed-bottom">
-    <div class="container-fluid">
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#!/profile/{{model.userId}}">
-                <span class="glyphicon glyphicon-user pull-right"></span>
-            </a>
-            </li>
-        </ul>
-    </div>
-</nav>
+<div ng-include="'views/common/footer.view.client.html'"></div>

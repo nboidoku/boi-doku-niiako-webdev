@@ -3,9 +3,6 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="#">
-                <span class="glyphicon glyphicon-chevron-left pull-left back-button"></span>
-            </a>
             <button type="button" class="navbar-toggle collapsed"
                     data-toggle="collapse"
                     data-target="#bs-example-navbar-collapse-1"
@@ -16,7 +13,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                Choose Widget
+                Widget List
             </a>
         </div>
 
@@ -46,31 +43,19 @@
 
 
 <div class="container-fluid">
-    <ul class="widget-list">
-        <li>
-            <a href="widget-heading-editor.view.client.html">
-                Header
+
+    <div ng-repeat='widget in model.widgets'class="wd-widget">
+        <div class="wd-toolbar pull-right">
+            <a>
+                <span class="glyphicon glyphicon-cog"></span>
             </a>
-        </li>
-        <li>Label</li>
-        <li>HTML</li>
-        <li>Text Input</li>
-        <li>Link</li>
-        <li>Button</li>
-        <li>
-            <a href="widget-image-editor.view.client.html">Image</a>
-        </li>
-        <li>
-            <a href="widget-youtube-editor.view.client.html">
-                Youtube
+            <a>
+                <span class="glyphicon glyphicon-align-justify"></span>
             </a>
-        </li>
-        <li>Data Table</li>
-        <li>Repeater</li>
-    </ul>
+        </div>
+        <div ng-include="model.getWidgetUrlForType(widget.widgetType)"></div>
+    </div>
 </div>
-
-
 
 <div ng-include="'views/common/footer.view.client.html'"></div>
 

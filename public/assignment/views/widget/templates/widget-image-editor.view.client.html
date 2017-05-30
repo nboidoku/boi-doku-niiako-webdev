@@ -16,7 +16,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                Choose Widget
+                Edit Widget
             </a>
         </div>
 
@@ -44,34 +44,37 @@
     </div>
 </nav>
 
+<div class="container">
+    <label for="name">Name</label>
+    <input id="name"
+           class="form-control"
+           placeholder="Name"/>
 
-<div class="container-fluid">
-    <ul class="widget-list">
-        <li>
-            <a href="widget-heading-editor.view.client.html">
-                Header
-            </a>
-        </li>
-        <li>Label</li>
-        <li>HTML</li>
-        <li>Text Input</li>
-        <li>Link</li>
-        <li>Button</li>
-        <li>
-            <a href="widget-image-editor.view.client.html">Image</a>
-        </li>
-        <li>
-            <a href="widget-youtube-editor.view.client.html">
-                Youtube
-            </a>
-        </li>
-        <li>Data Table</li>
-        <li>Repeater</li>
-    </ul>
+    <label for="text">Description</label>
+    <input id="text"
+           class="form-control"
+           value="Hello World This is Dope"/>
+    <label for="url">URL</label>
+    <input id="url"
+           class="form-control"
+           value="www.shutterstock.com"/>
+    <label for="width">Width</label>
+    <input id="width"
+           class="form-control"
+           value="30"/>
+    <label for="upload" class="control-label">Upload</label>
+    <input id="upload"
+           type="file"
+           class="file form-control"
+           />
+    <a class="btn btn-block btn-primary">Upload Image</a>
+
+    <a href="widget-list.view.client.html"
+       class="btn btn-block btn-danger">
+        Delete
+    </a>
 </div>
 
 
-
 <div ng-include="'views/common/footer.view.client.html'"></div>
-
 

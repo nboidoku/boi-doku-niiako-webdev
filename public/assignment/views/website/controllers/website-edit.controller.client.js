@@ -11,8 +11,6 @@
 
         model.userId = $routeParams['userId'];
 
-        console.log(model.userId);
-
         model.websiteId = $routeParams.websiteId;
 
         // event handlers
