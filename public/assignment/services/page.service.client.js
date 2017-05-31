@@ -52,7 +52,7 @@
         }
 
         function deletePage(pageId) {
-            var page = pages.find(function (website) {
+            var page = pages.find(function (pageId) {
                 return website._id === pageId;
             });
             var index = pages.indexOf(page);
