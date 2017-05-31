@@ -19,7 +19,7 @@
         model.deletePage = deletePage;
 
         function init() {
-            model.pages = pageService.findAllPagesForUser(model.websiteId);
+            model.pages = pageService.findAllPagesForWebsite(model.websiteId);
             model.page = pageService.findPageById(model.pageId);
         }
         init();
