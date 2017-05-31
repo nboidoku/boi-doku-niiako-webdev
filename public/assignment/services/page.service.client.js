@@ -52,8 +52,8 @@
         }
 
         function deletePage(pageId) {
-            var page = pages.find(function (pageId) {
-                return website._id === pageId;
+            var page = pages.find(function (page) {
+                return page._id === pageId;
             });
             var index = pages.indexOf(page);
             pages.splice(index, 1);
