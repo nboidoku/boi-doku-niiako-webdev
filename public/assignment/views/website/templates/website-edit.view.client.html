@@ -31,7 +31,7 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </li>
-                <li><a href="#">
+                <li><a ng-click="model.updateWebsite(model.website)">
                     <span class="glyphicon glyphicon-ok pull-right"></span>
                 </a>
                 </li>
@@ -43,8 +43,11 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-4 hidden-xs srollable-left">
+
             <ul class="list-group">
+
                 <li class="list-group-item active">
+
                     <div class="row">
                         <div class="col-lg-5 col-md-8 col-sm-11 col-xs-6">
                             Website Name
@@ -96,8 +99,7 @@
                       class="form-control"></textarea>
 
             <a
-                    ng-click="model.updateWebsite(model.websiteId,
-                    model.website.name, model.website.description)"
+                    ng-click="model.updateWebsite(model.website)"
                class="btn btn-block btn-success">
                 Update
             </a>

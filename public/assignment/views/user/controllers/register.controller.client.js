@@ -2,7 +2,7 @@
     angular
         .module('WebAppMaker')
         .controller('registerController', registerController);
-    
+
     function registerController($location, userService) {
 
         var model = this;
@@ -18,7 +18,7 @@
                 return;
             }
 
-            var found = userService.findUserByUsername(username);
+            var found = null;
 
             if(found !== null) {
                 model.error = "Username is not available";
@@ -27,8 +27,12 @@
                     username: username,
                     password: password
                 };
-                userService.createUser(user);
-                $location.url('/profile/' + user._id);
+                // model.message = user;
+                userService
+                    .createUser(user)
+                    .then(function (user) {
+                        $location.url('/profile/' + user._id);
+                    });
             }
         }
     }

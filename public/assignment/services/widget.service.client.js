@@ -17,7 +17,10 @@
         ];
 
         return {
-            findAllWidgetsByPage:findAllWidgetsByPage
+            findAllWidgetsByPage:findAllWidgetsByPage,
+            findWidgetById: findWidgetById,
+            updateWidget: updateWidget,
+            deleteWidget: deleteWidget
         };
 
 
@@ -29,6 +32,28 @@
                 }
             }
             return resultSet;
+        }
+
+        function findWidgetById(widgetId) {
+            return widgets.find(function (website) {
+                return widget._id === widgetId;
+            });
+        }
+
+        function updateWidget(widgetId, widget) {
+            for (var u in users) {
+                if (widgetId === widgets[u]._id) {
+                    widgets[u] = widget;
+                }
+            }
+        }
+
+        function deleteWidget(widgetId) {
+            var widget = widgets.find(function (widget) {
+                return widget._id === widgetId;
+            });
+            var index = widgets.indexOf(widget);
+            widgets.splice(index, 1);
         }
     }
 })

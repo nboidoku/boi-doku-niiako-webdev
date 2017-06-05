@@ -31,8 +31,7 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </li>
-                <li><a ng-click="model.updateUser(model.user,
-                model.user.firstName, model.user.lastName, model.user.email)">
+                <li><a ng-click="model.updateUser(model.user)">
                     <span class="glyphicon glyphicon-ok pull-right"></span>
                 </a>
                 </li>
@@ -43,13 +42,11 @@
 
 <div class="container">
 
-    <div ng-show="model.successful" class="alert alert-success">
-        {{model.successful}}
-    </div>
-
-    <div ng-show="model.message" class="alert alert-info">
-        {{model.message}}
-    </div>
+   <div class="alert alert-info" ng-show="model.message">
+       <div class="text-center">
+           {{model.message}}
+       </div>
+   </div>
 
     <div class=profile-inputs>
         <label for="username">Username </label>
@@ -77,8 +74,15 @@
                class="form-control"/>
     </div>
 
+    <a ng-click="model.updateUser(model.user)"
+       class="btn btn-block btn-success">Update</a>
+
+    <a ng-click="model.deleteUser(model.user)"
+       class="btn btn-block btn-danger">Unregister</a>
+
     <a href="#!/user/{{model.user._id}}/website"
        class="btn btn-block btn-primary">Websites</a>
+
     <a href="#!/login" class="btn btn-block btn-danger">Logout</a>
 </div>
 

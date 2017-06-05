@@ -7,15 +7,32 @@
     function profileController($location, $routeParams, userService) {
 
         var model = this;
-
         var userId = $routeParams['userId'];
+        model.updateUser = updateUser;
+        model.deleteUser = deleteUser;
 
-        model.user = userService.findUserById(userId);
+        userService
+            .findUserById(userId)
+            .then(renderUser);
 
-        model.updateUser = function(user, firstName, lastName, email) {
-            userService.updateUser(user._id, firstName, lastName, email);
-            $location.url('/profile/'+userId);
-            model.successful = "Successfully updated profile";
+        function renderUser (user) {
+            model.user = user;
+        }
+
+        function deleteUser(user) {
+            userService
+                .deleteUser(user._id)
+                .then(function () {
+                    $location.url('/login');
+                });
+        }
+
+        function updateUser(user) {
+            userService
+                .updateUser(user._id, user)
+                .then(function () {
+                    model.message = "User updated successfully";
+                });
         }
 
 
