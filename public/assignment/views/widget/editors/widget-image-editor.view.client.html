@@ -44,36 +44,46 @@
     </div>
 </nav>
 
-<div class="container">
+<div class="container-fluid">
+
     <label for="name">Name</label>
     <input id="name"
-           class="form-control"
-           placeholder="Name"
-            ng-model="model.widget.name"/>
+           ng-model="model.widget.name"
+           class="form-control"/>
 
-    <label for="text">Description</label>
+    <label for="text">Text</label>
     <input id="text"
-           class="form-control"
-           ng-model="this.widget.description"/>
+           ng-model="this.widget.description"
+           class="form-control"/>
+
     <label for="url">URL</label>
     <input id="url"
-           class="form-control"
-           ng-model="model.widget.url"/>
-    <label for="width">Width</label>
-    <input id="width"
-           class="form-control"
-           ng-model="model.widget.width"/>
-    <label for="upload" class="control-label">Upload</label>
-    <input id="upload"
-           type="file"
-           class="file form-control"
-           />
-    <a class="btn btn-block btn-primary">Upload Image</a>
+           ng-model="model.widget.url"
+           class="form-control"/>
 
-    <a ng-click="model.deleteWidget(model.widget)"
-       class="btn btn-block btn-danger">
-        Delete
+    <a class="btn btn-info btn-block" href="#!/widget/321/search">
+        Search
     </a>
+
+    <form action="/api/assignment/upload"   method="post" enctype="multipart/form-data">
+        <input  name="myFile"    type="file"  class="form-control"/>
+        <input  name="widgetId"  value="321"  style="display: none"/>
+        <input  name="width"     value="100%" style="display: none"/>
+        <button type="submit"    class="btn btn-block btn-primary">Upload Image</button>
+    </form>
+
+
+    <select class="form-control">
+        <option value="1">1 (XL Large)</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6 (smallest)</option>
+    </select>
+
+    <a class="btn btn-danger btn-block">Delete</a>
+
 </div>
 
 

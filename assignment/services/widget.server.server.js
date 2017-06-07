@@ -1,10 +1,16 @@
 var app = require('../../express');
 
+var multer = require('multer'); // npm install multer --save
+var upload = multer({ dest: __dirname+'/../../../public/assignment/uploads' });
+
+
 app.post('/api/assignment/page/:pageId/widget', createWidget);
 app.get('/api/assignment/page/:pageId/widget', findAllWidgetsByPage);
 app.get('/api/assignment/widget/:widgetId', findWidgetById);
 app.put('/api/assignment/widget/:widgetId', updateWidget);
 app.delete('/api/assignment/widget/:widgetId', deleteWidget);
+app.post ("/api/assignment/upload", upload.single('myFile'), uploadImage);
+
 
 
 var widgets = [
@@ -69,5 +75,29 @@ function deleteWidget(req, res) {
     var index = widgets.indexOf(widget);
     widgets.splice(index, 1);
     res.sendStatus(200);
+}
+
+function uploadImage(req, res) {
+
+    var widgetId      = req.body.widgetId;
+    var width         = req.body.width;
+    var myFile        = req.file;
+
+    var originalname  = myFile.originalname; // file name on user's computer
+    var filename      = myFile.filename;     // new file name in upload folder
+    var path          = myFile.path;         // full path of uploaded file
+    var destination   = myFile.destination;  // folder where file is saved to
+    var size          = myFile.size;
+    var mimetype      = myFile.mimetype;
+
+    console.log(myFile);
+
+    // widget = getWidgetById(widgetId);
+    var widget = {};
+    widget.url = '/assignment/uploads/'+filename;
+
+    var callbackUrl   = "/assignment/index.html#!/widget/"+widgetId;
+
+    res.redirect(callbackUrl);
 }
 
