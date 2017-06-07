@@ -1,5 +1,4 @@
 
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -48,7 +47,7 @@
 <div class="container-fluid">
     <ul class="widget-list">
         <li>
-            <a href="widget-heading-editor.view.client.html">
+            <a ng-click="model.createWidget('HEADING')">
                 Header
             </a>
         </li>
@@ -58,10 +57,10 @@
         <li>Link</li>
         <li>Button</li>
         <li>
-            <a href="widget-image-editor.view.client.html">Image</a>
+            <a ng-click="model.createWidget('IMAGE')">Image</a>
         </li>
         <li>
-            <a href="widget-youtube-editor.view.client.html">
+            <a ng-click="model.createWidget('YOUTUBE')">
                 Youtube
             </a>
         </li>

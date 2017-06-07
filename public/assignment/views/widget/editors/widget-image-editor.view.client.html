@@ -16,7 +16,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                Edit Widget
+                Widget Image Editor
             </a>
         </div>
 
@@ -35,7 +35,7 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </li>
-                <li><a href="#">
+                <li><a ng-click="model.updateWidget(model.widget)">
                     <span class="glyphicon glyphicon-ok pull-right"></span>
                 </a>
                 </li>
@@ -44,26 +44,38 @@
     </div>
 </nav>
 
-
 <div class="container">
     <label for="name">Name</label>
     <input id="name"
            class="form-control"
-           placeholder="Name"/>
+           placeholder="Name"
+            ng-model="model.widget.name"/>
 
     <label for="text">Description</label>
     <input id="text"
-              class="form-control"
-                value="Hello World This is Dope"/>
-    <label for="size">Size</label>
-    <input id="size"
            class="form-control"
-           value="3"/>
-    <a href="widget-list.view.client.html"
+           ng-model="this.widget.description"/>
+    <label for="url">URL</label>
+    <input id="url"
+           class="form-control"
+           ng-model="model.widget.url"/>
+    <label for="width">Width</label>
+    <input id="width"
+           class="form-control"
+           ng-model="model.widget.width"/>
+    <label for="upload" class="control-label">Upload</label>
+    <input id="upload"
+           type="file"
+           class="file form-control"
+           />
+    <a class="btn btn-block btn-primary">Upload Image</a>
+
+    <a ng-click="model.deleteWidget(model.widget)"
        class="btn btn-block btn-danger">
         Delete
     </a>
 </div>
+
 
 <div ng-include="'views/common/footer.view.client.html'"></div>
 

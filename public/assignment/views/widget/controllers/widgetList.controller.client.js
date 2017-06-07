@@ -4,6 +4,7 @@
         .controller('widgetListController', widgetListController);
 
     function widgetListController($routeParams, widgetService, $sce) {
+
         var model = this;
 
         model.userId = $routeParams['userId'];
@@ -20,7 +21,11 @@
 
 
 
-        model.widgets = widgetService.findAllWidgetsByPage(model.pageId);
+        widgetService
+            .findAllWidgetsByPage(model.pageId)
+            .then(function (widgets) {
+                model.widgets = widgets
+            });
 
 
         function getWidgetUrlForType(type) {

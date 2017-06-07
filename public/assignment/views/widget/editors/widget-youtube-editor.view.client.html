@@ -16,7 +16,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                Edit Widget
+                Widget Youtube Editor
             </a>
         </div>
 
@@ -35,7 +35,7 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </li>
-                <li><a href="#">
+                <li><a ng-click="model.updateWidget(model.widget)">
                     <span class="glyphicon glyphicon-ok pull-right"></span>
                 </a>
                 </li>
@@ -63,7 +63,7 @@
            class="form-control"
            value="30"/>
 
-    <a href="widget-list.view.client.html"
+    <a ng-click="model.deleteWidget(model.widget)"
        class="btn btn-block btn-danger">
         Delete
     </a>

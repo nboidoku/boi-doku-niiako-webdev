@@ -4,6 +4,7 @@
         .controller("pageNewController", pageNewController);
 
     function pageNewController($routeParams, pageService, $location) {
+
         var model = this;
 
         model.websiteId = $routeParams['websiteId'];

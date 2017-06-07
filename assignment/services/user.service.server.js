@@ -1,11 +1,11 @@
 var app = require('../../express');
 
 
-app.get   ('/api/user', findUserByCredentials);
-app.get   ('/api/user/:userId', findUserById);
-app.post  ('/api/user', createUser);
-app.put   ('/api/user/:userId', updateUser);
-app.delete('/api/user/:userId', deleteUser);
+app.get   ('/api/assignment/user', findUserByCredentials);
+app.get   ('/api/assignment/user/:userId', findUserById);
+app.post  ('/api/assignment/user', createUser);
+app.put   ('/api/assignment/user/:userId', updateUser);
+app.delete('/api/assignment/user/:userId', deleteUser);
 
 
 var users = [
@@ -67,4 +67,5 @@ function findUserByCredentials(req, res) {
     res.sendStatus(404);
 
 }
+
 

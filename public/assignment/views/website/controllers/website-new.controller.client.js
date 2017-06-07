@@ -24,9 +24,8 @@
 
         // implementation
         function createWebsite(website) {
-            var userId = model.userId;
             websiteService
-                .createWebsite(userId, website)
+                .createWebsite(model.userId, website)
                 .then (function () {
                     $location.url('/user/'+model.userId+'/website');
                 });
