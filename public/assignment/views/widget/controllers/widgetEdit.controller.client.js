@@ -30,7 +30,7 @@
 
         function updateWidget(widget){
             widgetService
-                .updateWidget(model.websiteId, widget._id)
+                .updateWidget(model.widgetId, widget)
                 .then (function () {
                     $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page/'+model.pageId+'/widget')
                 })
