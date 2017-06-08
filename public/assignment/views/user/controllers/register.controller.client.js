@@ -13,29 +13,52 @@
         // implementation
         function register(username, password, password2) {
 
-            if(password !== password2) {
-                model.error = "Passwords must match";
-                return;
-            }
 
             userService
                 .findUserByUsername(username)
                 .then(function (found) {
+                    console.log(found);
                     if (found) {
-                        model.error = "Username is not available"
+                        handleError('username')
                     }
                     else {
-                        var user = {
-                            username:username,
-                            password:password
-                        };
-                        userService
-                            .createUser(user)
-                            .then(function (user) {
-                                $location.url('/profile/' + user._id);
-                            })
+                        registerUser();
                     }
                 });
+
+            function registerUser() {
+
+                if (password !== password2) {
+                    handleError('password')
+                }
+                else {
+                    var user = {
+                        username:username,
+                        password:password
+                    };
+                    userService
+                        .createUser(user)
+                        .then(function (user) {
+                            $location.url('/profile/' + user._id);
+                        })
+                }
+
+            }
+
+            function handleError(error) {
+                switch(error) {
+                    case 'username':
+                        model.error = "Username " + username+ " is not" +
+                            " available";
+                        break;
+                    case 'password':
+                        model.error = "passwords must match";
+                        break;
+                    default:
+                        model.error = "error, please try again";
+                }
+            }
+
         }
     }
 })();
