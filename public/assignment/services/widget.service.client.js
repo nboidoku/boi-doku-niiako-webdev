@@ -48,6 +48,7 @@
                 })
         }
 
+
         function deleteWidget(widgetId) {
             var url = '/api/assignment/widget/' + widgetId;
             return $http.delete(url)

@@ -20,12 +20,15 @@
         model.updateWidget = updateWidget;
         model.deleteWidget = deleteWidget;
 
+        function init() {
+            widgetService
+                .findWidgetById(model.widgetId)
+                .then (function (widget) {
+                    model.widget = widget;
+                });
+        }
 
-        widgetService
-            .findWidgetById(model.widgetId)
-            .then (function (widget) {
-                model.widget = widget;
-            });
+        init();
 
 
         function updateWidget(widget){
