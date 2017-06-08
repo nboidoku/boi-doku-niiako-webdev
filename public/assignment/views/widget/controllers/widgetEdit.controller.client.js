@@ -24,6 +24,7 @@
             widgetService
                 .findWidgetById(model.widgetId)
                 .then (function (widget) {
+                    console.log(widget)
                     model.widget = widget;
                 });
         }

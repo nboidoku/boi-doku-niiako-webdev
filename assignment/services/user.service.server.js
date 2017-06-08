@@ -1,7 +1,7 @@
 var app = require('../../express');
 
 
-app.get   ('/api/assignment/user', findUserByCredentials);
+app.get   ('/api/assignment/user', findUser);
 app.get   ('/api/assignment/user/:userId', findUserById);
 app.post  ('/api/assignment/user', createUser);
 app.put   ('/api/assignment/user/:userId', updateUser);
@@ -53,18 +53,30 @@ function createUser(req, res) {
     res.send(user);
 }
 
-function findUserByCredentials(req, res) {
-    var username = req.query['username'];
-    var password = req.query['password'];
-    for(var u in users) {
-        var user = users[u];
-        if( user.username === username &&
-            user.password === password) {
-            res.json(user);
-            return;
+function findUser(req, res) {
+    if (req.query['username'] && req.query['password']) {
+        var username = req.query['username'];
+        var password = req.query['password'];
+        for (var u in users) {
+            var user = users[u];
+            if (user.username === username &&
+                user.password === password) {
+                res.json(user);
+                return;
+            }
         }
+        res.sendStatus(404);
     }
-    res.sendStatus(404);
+    else if (req.query['username']){
+        var username = req.query['username'];
+        var user = users.find(function (user) {
+            return username === user.username;
+        });
+        res.send(user);
+    }
+    else {
+        res.sendStatus(404);
+    }
 
 }
 

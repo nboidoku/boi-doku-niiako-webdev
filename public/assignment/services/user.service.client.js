@@ -8,6 +8,7 @@
         return {
             findUserById: findUserById,
             findUserByCredentials:findUserByCredentials,
+            findUserByUsername: findUserByUsername,
             createUser: createUser,
             deleteUser: deleteUser,
             updateUser: updateUser
@@ -51,6 +52,14 @@
                 .then(function (response) {
                     return response.data;
                 });
+        }
+
+        function findUserByUsername(username) {
+            var url = "/api/assignment/user?username="+ username;
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                })
         }
 
     }

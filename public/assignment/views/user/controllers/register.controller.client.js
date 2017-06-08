@@ -18,22 +18,24 @@
                 return;
             }
 
-            var found = null;
-
-            if(found !== null) {
-                model.error = "Username is not available";
-            } else {
-                var user = {
-                    username: username,
-                    password: password
-                };
-                // model.message = user;
-                userService
-                    .createUser(user)
-                    .then(function (user) {
-                        $location.url('/profile/' + user._id);
-                    });
-            }
+            userService
+                .findUserByUsername(username)
+                .then(function (found) {
+                    if (found) {
+                        model.error = "Username is not available"
+                    }
+                    else {
+                        var user = {
+                            username:username,
+                            password:password
+                        };
+                        userService
+                            .createUser(user)
+                            .then(function (user) {
+                                $location.url('/profile/' + user._id);
+                            })
+                    }
+                });
         }
     }
 })();
