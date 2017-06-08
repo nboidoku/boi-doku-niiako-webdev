@@ -1,7 +1,22 @@
 (function () {
     angular
         .module('WebAppMaker')
-        .controller('widgetListController', widgetListController);
+        .controller('widgetListController', widgetListController)
+        .directive("wdSortable", wdSortable);
+
+
+    function wdSortable() {
+
+        function linkFunction(scope, element) {
+            element.sortable();
+        }
+
+        return {
+            link: linkFunction
+        }
+
+    }
+
 
     function widgetListController($routeParams, widgetService, $sce) {
 
@@ -20,7 +35,6 @@
         model.getWidgetUrlForType = getWidgetUrlForType;
 
 
-
         widgetService
             .findAllWidgetsByPage(model.pageId)
             .then(function (widgets) {
@@ -29,7 +43,7 @@
 
 
         function getWidgetUrlForType(type) {
-            return 'views/widget/templates/widget-'+type.toLowerCase()+'.view.client.html';
+            return 'views/widget/templates/widget-' + type.toLowerCase() + '.view.client.html';
         }
 
         function getYouTubeEmbedUrl(youTubeLink) {
