@@ -1,21 +1,7 @@
 (function () {
     angular
         .module('WebAppMaker')
-        .controller('widgetListController', widgetListController)
-        .directive("wdSortable", wdSortable);
-
-
-    function wdSortable() {
-
-        function linkFunction(scope, element) {
-            element.sortable();
-        }
-
-        return {
-            link: linkFunction
-        }
-
-    }
+        .controller('widgetListController', widgetListController);
 
 
     function widgetListController($routeParams, widgetService, $sce) {
