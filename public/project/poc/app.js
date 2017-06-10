@@ -3,7 +3,7 @@
         .module('pocApp', [])
         .controller('pocController', pocController);
 
-    function pocController($http) {
+    function pocController() {
 
         var model = this;
 
@@ -35,7 +35,7 @@
                     changeModelMessage(result);
                 }
 
-            });
+            })
         }
 
         function changeModelMessage(result) {
