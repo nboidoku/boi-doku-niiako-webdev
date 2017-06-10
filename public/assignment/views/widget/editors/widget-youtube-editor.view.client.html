@@ -49,20 +49,20 @@
     <input id="name"
            class="form-control"
            placeholder="Name"
-            ng-model="widget.name"/>
+            ng-model="model.widget.name"/>
 
     <label for="text">Description</label>
     <input id="text"
            class="form-control"
-           ng-model="widget.text"/>
+           ng-model="model.widget.text"/>
     <label for="url">URL</label>
     <input id="url"
            class="form-control"
-           ng-model="widget.url"/>
+           ng-model="model.widget.url"/>
     <label for="width">Width</label>
     <input id="width"
            class="form-control"
-           value="30"/>
+           ng-model="model.widget.width"/>
 
     <a ng-click="model.deleteWidget(model.widget)"
        class="btn btn-block btn-danger">
