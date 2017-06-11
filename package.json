@@ -7,14 +7,15 @@
     "body-parser": "^1.17.2",
     "express": "^4.13.4",
     "jquery": "^3.2.1",
-    "mongoose": "^4.4.15",
-    "multer": "^1.3.0"
+    "mongoose": "^4.10.5",
+    "multer": "^1.3.0",
+    "q": "^1.5.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "Jose G. Annunziato",
+  "author": "Nii Ako Boi-Doku",
   "license": "ISC"
 }
