@@ -19,7 +19,7 @@ var websites = [
 ];
 
 function findAllWebsitesForUser(req, res) {
-    return websiteModel
+    websiteModel
         .findAllWebsitesForUser(req.params['userId'])
         .then(function (websites) {
             res.json(websites)

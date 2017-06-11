@@ -1,5 +1,7 @@
 var app = require('../../express');
 
+var widgetModel = require('../model/widget/widget.model.server');
+
 var multer = require('multer'); // npm install multer --save
 var upload = multer({ dest: __dirname+'/../../public/assignment/uploads' });
 
@@ -30,52 +32,47 @@ var widgets = [
 
 function createWidget(req, res) {
     var widget = req.body;
-    widget._id = (new Date().getTime()) + "";
-    widget.pageId = req.params['pageId'];
-    widgets.push(widget);
-    res.send(widget);
+    widget._page = req.params['pageId'];
+    widgetModel
+        .createWidget(widget)
+        .then(function (response) {
+            res.send(response);
+        })
 }
 
 function findAllWidgetsByPage(req, res) {
-    var resultSet = [];
-    for(var w in widgets) {
-        if(widgets[w].pageId === req.params.pageId) {
-            resultSet.push(widgets[w]);
-        }
-    }
-    res.json(resultSet);
+    widgetModel
+        .findAllWidgetsForPage(req.params['pageId'])
+        .then(function (widgets) {
+            res.json(widgets)
+        })
 }
 
 function updateWidget(req, res) {
     var widget = req.body;
-    widget.updated = new Date();
-    var widgetId = req.params['widgetId'];
-    for(var u in widgets) {
-        if(widgetId === widgets[u]._id) {
-            widgets[u] = widget;
-            res.sendStatus(200);
-            return;
-        }
-    }
-    res.sendStatus(404);
+    widgetModel
+        .updateWidget(req.params['widgetId'], widget)
+        .then(function (response) {
+            res.send(response);
+        })
 }
 
 function findWidgetById(req, res) {
     var widgetId = req.params['widgetId'];
-    var widget = widgets.find(function (widget) {
-        return widgetId === widget._id;
-    });
-    res.send(widget);
+    widgetModel
+        .findWidgetById(widgetId)
+        .then(function (widget) {
+            res.json(widget)
+        })
 }
 
 function deleteWidget(req, res) {
     var widgetId = req.params['widgetId'];
-    var widget = widgets.find(function (widget) {
-        return widget._id === widgetId;
-    });
-    var index = widgets.indexOf(widget);
-    widgets.splice(index, 1);
-    res.sendStatus(200);
+    widgetModel
+        .deleteWidget(widgetId)
+        .then(function (response) {
+            res.send(response)
+        })
 }
 
 function uploadImage(req, res) {
@@ -93,9 +90,20 @@ function uploadImage(req, res) {
 
     console.log(myFile);
 
-    // widget = getWidgetById(widgetId);
-    var widget = {};
-    widget.url = '/assignment/uploads/'+filename;
+    widgetModel
+        .findWidgetById(widgetId)
+        .then(function (widget) {
+            var widget = widget;
+        })
+        .then(function () {
+            widget.url = '/assignment/uploads/'+filename;
+            widgetModel
+                .updateWidget(widgetId, widget)
+                .then(function (response) {
+                    res.send(response)
+                })
+        });
+
 
     var callbackUrl   = "/assignment/index.html#!/user/"+req.body.userId+"/website/"+req.body.websiteId
     +"/page/"+req.body.pageId+"/widget/"+widgetId;

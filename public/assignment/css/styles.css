@@ -5,7 +5,7 @@ textarea.form-control {
 }
 
 .navbar-form .form-group .form-control {
-    margin-bottom: 0px;
+    margin-bottom: 10px;
 }
 
 .profile-inputs .form-control {
@@ -15,7 +15,11 @@ textarea.form-control {
 .copyright {
     color: #0f0f0f;
     font-size: 70%;
+}
 
+.form-control {
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 
 body {

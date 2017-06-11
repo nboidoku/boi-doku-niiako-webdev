@@ -19,7 +19,7 @@
 
         function createWidget(type) {
             var widget = {
-                widgetType: type
+                type: type
             };
             widgetService
                 .createWidget(model.pageId, widget)
