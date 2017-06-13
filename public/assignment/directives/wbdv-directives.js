@@ -9,16 +9,18 @@
             link: linkFunction
         };
 
-        function linkFunction(scope, element) {
+        function linkFunction(scope, element, widgetService, $routeParams) {
+            var model = this;
+            model.pageId = $routeParams['pageId'];
+
             $(element).sortable({
-                start: function (event, ui) {
-                    ui.item.startPosition = ui.item.index();
+                start: function (event, wid) {
+                    wid.item.startPosition = wid.item.index();
                 },
                 update: function (event, ui) {
                     var start = ui.item.startPosition;
                     var end = ui.item.index();
-                    reorderWidget(start, end);
-                    widgetService.reorderWidget($routeParams[pageId], start, end)
+                    widgetService.reorderWidget(model.pageId, start, end)
                 },
                 axis: 'y',
                 cursor: "move"
