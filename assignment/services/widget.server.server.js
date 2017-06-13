@@ -11,6 +11,7 @@ app.get('/api/assignment/page/:pageId/widget', findAllWidgetsByPage);
 app.get('/api/assignment/widget/:widgetId', findWidgetById);
 app.put('/api/assignment/widget/:widgetId', updateWidget);
 app.delete('/api/assignment/widget/:widgetId', deleteWidget);
+app.put('/api/page/:pageId/widget', reorderWidget);
 
 app.post ("/api/assignment/upload", upload.single('myFile'), uploadImage);
 
@@ -112,3 +113,12 @@ function uploadImage(req, res) {
     res.redirect(callbackUrl);
 }
 
+function reorderWidget(req, res) {
+    var start = parseInt(req.query.initial);
+    var end = parseInt(req.query.final);
+
+    widgetModel.reorderWidget(req.params['pageId'], start, end)
+        .then(function () {
+            res.sendStatus(200);
+        });
+}
