@@ -36,6 +36,7 @@ function createWidget(req, res) {
     widgetModel
         .createWidget(widget)
         .then(function (response) {
+            console.log('here')
             res.send(response);
         })
 }

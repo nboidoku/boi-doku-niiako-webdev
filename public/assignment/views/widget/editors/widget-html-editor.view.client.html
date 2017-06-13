@@ -1,9 +1,7 @@
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page">
+            <a href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget">
                 <span class="glyphicon glyphicon-chevron-left pull-left back-button"></span>
             </a>
             <button type="button" class="navbar-toggle collapsed"
@@ -16,7 +14,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">
-                Widget List
+                Widget HTML Editor
             </a>
         </div>
 
@@ -35,9 +33,8 @@
                         <li><a href="#">Separated link</a></li>
                     </ul>
                 </li>
-                <li><a
-                        href="#!/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
-                    <span class="glyphicon glyphicon-plus pull-right"></span>
+                <li><a ng-click="model.updateWidget(model.widget)">
+                    <span class="glyphicon glyphicon-ok pull-right"></span>
                 </a>
                 </li>
             </ul>
@@ -45,37 +42,23 @@
     </div>
 </nav>
 
+<div class="container-fluid">
 
-<div wd-sortable class="container-fluid">
+<div ng-model="model.widget.text"
+     text-angular
+     ta-toolbar="[['h1','h2','h3'],['bold','italics','underline','strikeThrough'],
+        ['ul','ol'],['justifyLeft','justifyCenter','justifyRight','justifyFull'],
+        ['indent','outdent'],['html']]">
+</div>
 
-    <div ng-repeat="widget in model.widgets"
-         class="wd-widget">
-        <div class="wd-toolbar">
-            <a href="#!user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <div ng-switch="widget.type">
-            <div ng-switch-when="HEADING">
-                <div ng-include="'views/widget/templates/widget-heading.view.client.html'"></div>
-            </div>
-            <div ng-switch-when="IMAGE">
-                <div ng-include="'views/widget/templates/widget-image.view.client.html'"></div>
-            </div>
-            <div ng-switch-when="HTML"
-                 ng-bind-html="model.trustThisContent(widget.text)">
-            </div>
-            <div ng-switch-when="YOUTUBE"  class="youtube-widget">
-                <div ng-include="'views/widget/templates/widget-youtube.view.client.html'"></div>
-            </div>
-            <div ng-switch-when="TEXT">
-                <div ng-include="'views/widget/templates/widget-text.view.client.html'"> </div>
-            </div>
-    </div>
+<a ng-click="model.updateWidget(model.widget)"
+   class="btn btn-block btn-success">
+    Update
+</a>
+<a ng-click="model.deleteWidget(model.widget)"
+   class="btn btn-danger btn-block">
+    Delete</a>
+
 </div>
 
 <div ng-include="'views/common/footer.view.client.html'"></div>
-
-
-
