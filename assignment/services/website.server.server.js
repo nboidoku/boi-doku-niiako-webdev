@@ -41,6 +41,8 @@ function findWebsiteById(req, res) {
     websiteModel
         .findWebsiteById(websiteId)
         .then(function (website) {
+            console.log(website);
+
             res.json(website)
     });
 }

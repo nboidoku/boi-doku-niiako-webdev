@@ -44,6 +44,7 @@ function findPageById(req, res) {
     return pageModel
         .findPageById(pageId)
         .then(function (page) {
+            console.log(page);
             res.json(page)
         })
 }

@@ -3,15 +3,13 @@
         .module('wbdvDirective', ['ngRoute'])
         .directive('wdSortable', wdSortable);
 
-    function wdSortable() {
+    function wdSortable($routeParams, widgetService) {
 
         return {
             link: linkFunction
         };
 
-        function linkFunction(scope, element, widgetService, $routeParams) {
-            var model = this;
-            model.pageId = $routeParams['pageId'];
+        function linkFunction(scope, element) {
 
             $(element).sortable({
                 start: function (event, wid) {
@@ -20,7 +18,7 @@
                 update: function (event, ui) {
                     var start = ui.item.startPosition;
                     var end = ui.item.index();
-                    widgetService.reorderWidget(model.pageId, start, end)
+                    widgetService.reorderWidget($routeParams['pageId'], start, end)
                 },
                 axis: 'y',
                 cursor: "move"

@@ -8,11 +8,15 @@ userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByUsername = findUserByUsername;
 userModel.deleteUser = deleteUser;
 userModel.updateUser = updateUser;
+userModel.addToWebsite = addToWebsites;
+userModel.removeFromWebsites = removeFromWebsites;
 
 module.exports = userModel;
 
 function createUser(user) {
-    return userModel.create(user);
+    return userModel
+        .create(user)
+
 }
 
 function findUserById(userId) {
@@ -41,4 +45,23 @@ function updateUser(userId, newUser) {
             phone: newUser.phone
         }
     });
+}
+
+function addToWebsites(userId, websiteId) {
+    return userModel
+        .findUserById(userId)
+        .then(function (user) {
+            user.websites.push(websiteId);
+            return user.save();
+
+        })
+}
+
+function removeFromWebsites(userId, websiteId) {
+    return userModel
+        .findUserById(userId)
+        .then(function (user) {
+            user.websites.splice(user._pages.indexOf(websiteId), 1)
+            return user.save();
+        })
 }

@@ -35,6 +35,7 @@ function deleteUser(req, res) {
 
 function updateUser(req, res) {
     var user = req.body;
+    console.log(user);
     var userId = req.params['userId'];
     userModel
         .updateUser(userId, user)

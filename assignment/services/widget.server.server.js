@@ -116,9 +116,10 @@ function uploadImage(req, res) {
 function reorderWidget(req, res) {
     var start = parseInt(req.query.initial);
     var end = parseInt(req.query.final);
-
-    widgetModel.reorderWidget(req.params['pageId'], start, end)
+    widgetModel
+        .reorderWidget(req.params['pageId'], start, end)
         .then(function () {
             res.sendStatus(200);
         });
+
 }

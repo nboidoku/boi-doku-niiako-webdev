@@ -62,6 +62,7 @@
             var url = '/api/page/' + pageId + '/widget?initial=' + start + '&final=' + end;
             return $http.put(url)
                 .then(function (response) {
+                    console.log('here');
                     return response.data;
                 })
         }
