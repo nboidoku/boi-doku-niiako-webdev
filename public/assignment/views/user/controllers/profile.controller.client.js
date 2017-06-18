@@ -4,20 +4,15 @@
         .controller('profileController', profileController);
     
     
-    function profileController($location, $routeParams, userService) {
+    function profileController(currentUser, $location, $routeParams, userService) {
 
         var model = this;
-        var userId = $routeParams['userId'];
+        var userId = currentUser._id;
         model.updateUser = updateUser;
         model.deleteUser = deleteUser;
+        model.user = currentUser;
+        model.logout = logout;
 
-        userService
-            .findUserById(userId)
-            .then(renderUser);
-
-        function renderUser (user) {
-            model.user = user;
-        }
 
         function deleteUser(user) {
             userService
@@ -35,6 +30,13 @@
                 });
         }
 
+        function logout() {
+            userService
+                .logout()
+                .then(function () {
+                    $location.url('/login')
+                })
+        }
 
     }
 })

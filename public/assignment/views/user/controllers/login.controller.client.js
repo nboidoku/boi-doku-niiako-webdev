@@ -11,7 +11,7 @@
         model.login = function (username, password) {
 
             userService
-                .findUserByCredentials(username, password)
+                .login(username, password)
                 .then(login, handleError);
 
             function handleError(error) {
@@ -20,7 +20,7 @@
 
             function login(found) {
                 if (found !== null) {
-                    $location.url('/profile/' + found._id);
+                    $location.url('/profile');
                 } else {
                     model.message = "Username " + username + " not found, please try again";
                 }
