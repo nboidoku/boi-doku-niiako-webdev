@@ -14,6 +14,27 @@
         function register(username, password, password2) {
 
 
+            model.emptyUsername = "";
+            model.emptyPassword = "";
+            model.emptyPassword2 = "";
+
+
+            if (!username) {
+                model.emptyUsername = "enter a username";
+                return
+            }
+
+            if (!password) {
+                model.emptyPassword = "enter a password";
+                return
+            }
+
+            if (!password2) {
+                model.emptyPassword2 = "retype password";
+                return
+            }
+
+
             userService
                 .findUserByUsername(username)
                 .then(function (found) {

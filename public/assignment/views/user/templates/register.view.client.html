@@ -1,26 +1,41 @@
 <div class="container">
     <h1>Register</h1>
 
-    <div class="alert alert-info" ng-show="model.error">
+    <div class="alert alert-danger" ng-show="model.error">
         <div class="text-center">
             {{model.error}}
         </div>
     </div>
 
     <label for="username">Username</label>
+
+    <div ng-show=model.emptyUsername class="alert alert-danger">
+        {{model.emptyUsername}}
+    </div>
     <input id="username"
            type="text"
            class="form-control"
            placeholder="username"
            ng-model="username">
+
+
     <label for="password">Password</label>
+
+    <div ng-show=model.emptyPassword class="alert alert-danger">
+        {{model.emptyPassword}}
+    </div>
 
     <input id="password"
            type="password"
            ng-model="password"
            class="form-control"
            placeholder="password"/>
+
     <label for="password2">Verify Password</label>
+
+    <div ng-show=model.emptyPassword2 class="alert alert-danger">
+        {{model.emptyPassword2}}
+    </div>
 
     <input id="password2"
            type="password"
