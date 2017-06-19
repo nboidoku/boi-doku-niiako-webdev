@@ -35,11 +35,19 @@
         // implementation
 
         function updatePage(page) {
-            pageService
-                .updatePage(model.pageId, page)
-                .then(function () {
-                    $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
-                });
+
+            model.emptyPageName = "";
+
+            if (!page.name) {
+                model.emptyPageName = "Please enter page name"
+            }
+            else {
+                pageService
+                    .updatePage(model.pageId, page)
+                    .then(function () {
+                        $location.url('/user/'+model.userId+'/website/'+model.websiteId+'/page');
+                    });
+            }
         }
 
         function deletePage(pageId) {

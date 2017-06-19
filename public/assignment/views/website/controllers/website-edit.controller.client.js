@@ -33,11 +33,20 @@
 
         // implementation
         function updateWebsite(website) {
-            websiteService
-                .updateWebsite(model.websiteId, website)
-                .then(function () {
-                    $location.url('/user/'+model.userId+'/website');
-                });
+
+            model.emptyWebsiteName = "";
+
+            if (!website.name) {
+                model.emptyWebsiteName = "Please enter a website name"
+            }
+            else {
+                websiteService
+                    .updateWebsite(model.websiteId, website)
+                    .then(function () {
+                        $location.url('/user/'+model.userId+'/website');
+                    });
+            }
+
         }
 
         function deleteWebsite(websiteId) {

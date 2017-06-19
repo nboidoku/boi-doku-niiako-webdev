@@ -23,13 +23,26 @@
 
         init();
 
-        function createPage(page) {
-            var websiteId = model.websiteId;
-            pageService
-                .createPage(websiteId, page)
-                .then(function () {
-                    $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page')
-                });
+        function createPage(name, description) {
+
+            model.emptyPageName = "";
+
+            if (!name) {
+                model.emptyPageName = "Please enter Page name"
+            }
+            else {
+                var websiteId = model.websiteId;
+                var page = {
+                    name: name,
+                    description: description
+                };
+                pageService
+                    .createPage(websiteId, page)
+                    .then(function () {
+                        $location.url('/user/' + model.userId + '/website/' + model.websiteId + '/page')
+                    });
+            }
+
         }
     }
 })
