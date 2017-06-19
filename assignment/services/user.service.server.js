@@ -1,36 +1,45 @@
 var app = require('../../express');
 var userModel = require('../model/user/user.model.server');
-var passport      = require('passport');
+var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 passport.use(new LocalStrategy(localStrategy));
 passport.serializeUser(serializeUser);
 passport.deserializeUser(deserializeUser);
 
-app.get   ('/api/assignment/user', findUser);
-app.get   ('/api/assignment/user/:userId', findUserById);
-app.post  ('/api/assignment/user', createUser);
-app.put   ('/api/assignment/user/:userId', updateUser);
-app.delete('/api/assignment/user/:userId', deleteUser);
+app.get('/api/assignment/users', isAdmin, findUser);
 
-app.post  ('/api/assignment/login', passport.authenticate('local'), login);
-app.get   ('/api/assignment/checkLoggedIn', checkLoggedIn);
-app.get   ('/api/assignment/checkAdmin', checkAdmin);
-app.post  ('/api/assignment/register', register);
-app.post  ('/api/assignment/logout', logout);
+app.get('/api/assignment/user', findUserByUsername);
+
+app.get('/api/assignment/user/:userId', findUserById);
+
+app.post('/api/assignment/user', createUser);
+
+app.put('/api/assignment/user/:userId', updateUser);
+
+app.delete('/api/assignment/user/:userId', isAdmin, deleteUser);
+app.delete('/api/assignment/unregister', unregister);
+
+app.post('/api/assignment/login', passport.authenticate('local'), login);
+app.get('/api/assignment/checkLoggedIn', checkLoggedIn);
+app.get('/api/assignment/checkAdmin', checkAdmin);
+app.post('/api/assignment/register', register);
+app.post('/api/assignment/logout', logout);
 
 
 function localStrategy(username, password, done) {
     userModel
         .findUserByCredentials(username, password)
         .then(
-            function(user) {
+            function (user) {
                 if (!user) {
                     return done(null, false);
                 }
                 return done(null, user);
             },
-            function(err) {
-                if (err) { return done(err); }
+            function (err) {
+                if (err) {
+                    return done(err);
+                }
             }
         );
 }
@@ -62,6 +71,23 @@ function checkAdmin(req, res) {
     }
 }
 
+function unregister(req, res) {
+    userModel
+        .deleteUser(req.user._id)
+        .then(function (status) {
+            res.sendStatus(200);
+        })
+}
+
+function isAdmin(req, res, next) {
+    if (req.isAuthenticated() && req.user.roles.indexOf('ADMIN') > -1) {
+        next();
+    }
+    else {
+        res.sendStatus(401);
+    }
+}
+
 
 function register(req, res) {
     var user = req.body;
@@ -78,7 +104,7 @@ function findUserById(req, res) {
     var userId = req.params['userId'];
     userModel
         .findUserById(userId)
-        .then(function(user) {
+        .then(function (user) {
             res.json(user);
         });
 }
@@ -107,7 +133,7 @@ function createUser(req, res) {
     var user = req.body;
     userModel
         .createUser(user)
-        .then(function(user) {
+        .then(function (user) {
             res.json(user);
         });
 
@@ -120,7 +146,7 @@ function findUser(req, res) {
         userModel
             .findUserByCredentials(username, password)
             .then(function (user) {
-                if(user !== null) {
+                if (user !== null) {
                     res.json(user);
                 }
                 else {
@@ -130,7 +156,18 @@ function findUser(req, res) {
                 res.sendStatus(404);
             });
     }
-    else if (req.query['username']){
+    else {
+        userModel
+            .findAllUsers()
+            .then(function (users) {
+                res.json(users);
+            })
+    }
+
+}
+
+function findUserByUsername(req, res) {
+    if (req.query['username']) {
         var username = req.query['username'];
         userModel
             .findUserByUsername(username)
@@ -141,7 +178,6 @@ function findUser(req, res) {
     else {
         res.sendStatus(404);
     }
-
 }
 
 function serializeUser(user, done) {
@@ -152,10 +188,10 @@ function deserializeUser(user, done) {
     userModel
         .findUserById(user._id)
         .then(
-            function(user){
+            function (user) {
                 done(null, user);
             },
-            function(err){
+            function (err) {
                 done(err, null);
             }
         );

@@ -6,6 +6,7 @@ userModel.createUser = createUser;
 userModel.findUserById = findUserById;
 userModel.findUserByCredentials = findUserByCredentials;
 userModel.findUserByUsername = findUserByUsername;
+userModel.findAllUsers = findAllUsers;
 userModel.deleteUser = deleteUser;
 userModel.updateUser = updateUser;
 userModel.addToWebsite = addToWebsites;
@@ -65,4 +66,8 @@ function removeFromWebsites(userId, websiteId) {
             user.websites.splice(user._pages.indexOf(websiteId), 1)
             return user.save();
         })
+}
+
+function findAllUsers() {
+    return userModel.find();
 }

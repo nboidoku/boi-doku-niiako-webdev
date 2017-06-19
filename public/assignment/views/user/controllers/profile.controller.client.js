@@ -9,16 +9,19 @@
         var model = this;
         var userId = currentUser._id;
         model.updateUser = updateUser;
-        model.deleteUser = deleteUser;
+        model.unregister = unregister;
         model.user = currentUser;
         model.logout = logout;
 
 
-        function deleteUser(user) {
+        function unregister() {
             userService
-                .deleteUser(user._id)
+                .unregister()
                 .then(function () {
-                    $location.url('/login');
+                    userService.logout()
+                })
+                .then(function () {
+                    $location.url('/login')
                 });
         }
 

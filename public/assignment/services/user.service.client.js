@@ -12,9 +12,11 @@
             logout:logout,
             checkLoggedIn: checkLoggedIn,
             checkAdmin: checkAdmin,
+            findAllUsers: findAllUsers,
             register: register,
             createUser: createUser,
             deleteUser: deleteUser,
+            unregister: unregister,
             updateUser: updateUser
         };
 
@@ -114,6 +116,22 @@
                 .post(url, user)
                 .then(function (response) {
                     return response.data
+                })
+        }
+
+        function findAllUsers() {
+            var url = "/api/assignment/users";
+            return $http.get(url)
+                .then(function (response) {
+                    return response.data;
+                })
+        }
+
+        function unregister() {
+            var url = "/api/assignment/unregister";
+            return $http.delete(url)
+                .then(function (response) {
+                    return response.data;
                 })
         }
 
