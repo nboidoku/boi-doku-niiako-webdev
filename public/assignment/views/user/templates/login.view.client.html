@@ -6,6 +6,9 @@
     </div>
 
     <label for="username">Username</label>
+    <div ng-show=model.emptyUsername class="alert alert-danger">
+        {{model.emptyUsername}}
+    </div>
     <input autocorrect="off"
            autocapitalize="off"
            ng-model="username"
@@ -15,6 +18,9 @@
            placeholder="username"
            class="form-control"/>
 
+    <div ng-show=model.emptyPassword class="alert alert-danger">
+        {{model.emptyPassword}}
+    </div>
     <label>Password</label>
     <input ng-model="password"
            class="form-control"
