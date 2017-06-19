@@ -47,7 +47,7 @@ function updateWebsite(websiteId, newWebsite) {
 }
 
 function deleteWebsite(websiteId) {
-    websiteModel.findWebsiteById(webisteId)
+    websiteModel.findWebsiteById(websiteId)
         .then(function (website) {
             userId = website._user
         })

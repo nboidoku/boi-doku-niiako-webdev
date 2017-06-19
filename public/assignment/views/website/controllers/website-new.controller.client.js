@@ -23,12 +23,27 @@
         init();
 
         // implementation
-        function createWebsite(website) {
-            websiteService
-                .createWebsite(model.userId, website)
-                .then (function () {
-                    $location.url('/user/'+model.userId+'/website');
-                });
+        function createWebsite(name, description) {
+
+            model.emptyWebsiteName = "";
+
+            if (!name) {
+                model.emptyWebsiteName = "Please enter a name";
+            }
+            else {
+                var website = {
+                    name: name,
+                    description: description
+                };
+
+                websiteService
+                    .createWebsite(model.userId, website)
+                    .then (function () {
+                        $location.url('/user/'+model.userId+'/website');
+                    });
+            }
+
+
         }
     }
 })();
