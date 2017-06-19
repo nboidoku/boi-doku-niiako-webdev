@@ -4,6 +4,10 @@ var userSchema = mongoose.Schema({
     username: {type:String, require:true},
     password: {type:String, require:true},
     firstName: String,
+    google: {
+        id:    String,
+        token: String
+    },
     roles: [{type: String, default:'USER', enum: ['USER', 'STUDENT', 'FACULTY', 'ADMIN']}],
     lastName: String,
     email: String,
