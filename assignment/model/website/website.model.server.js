@@ -47,13 +47,14 @@ function updateWebsite(websiteId, newWebsite) {
 }
 
 function deleteWebsite(websiteId) {
-    websiteModel.findWebsiteById(websiteId)
+    websiteModel
+        .findWebsiteById(websiteId)
         .then(function (website) {
             userId = website._user
         })
         .then(function () {
-            UserModel.removeFromWebsites(websiteId)
-        })
+            userModel.removeFromWebsites(websiteId)
+        });
     return websiteModel.remove({_id: websiteId})
 }
 

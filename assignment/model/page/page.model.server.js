@@ -77,6 +77,5 @@ function removeFromWidgets(pageId, widgetId) {
         .then(function (page) {
             page.widgets.splice(page.widgets.indexOf(widgetId), 1);
             return page.save();
-
         })
 }
